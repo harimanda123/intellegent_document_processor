@@ -1,0 +1,50 @@
+[project]
+name = "idp"
+version = "1.0.0"
+description = "Intelligent Document Gateway — AI-powered document extraction platform"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    # Web framework
+    "fastapi>=0.136.1",
+    "uvicorn[standard]>=0.46.0",
+    "python-multipart>=0.0.27",
+    "aiofiles>=25.1.0",
+
+    # Database
+    "sqlalchemy>=2.0.49",
+
+    # Config / env
+    "pydantic>=2.13.4",
+    "pydantic-settings>=2.14.1",
+    "python-dotenv>=1.2.2",
+
+    # LLM — core (always required)
+    "instructor>=1.15.1",
+    "openai>=1.30.0",
+    "groq>=1.2.0",
+
+    # LLM — optional providers (uncomment as needed)
+    # "anthropic>=0.25.0",
+
+    # Document processing
+    "pymupdf>=1.27.2.3",
+
+    # HTTP client (used by instructor / openai)
+    "httpx>=0.27.0",
+
+    # Streamlit UI
+    "streamlit>=1.35.0",
+    "requests>=2.32.0",
+]
+
+[project.optional-dependencies]
+# Install with: pip install -e '.[anthropic]'
+anthropic = ["anthropic>=0.25.0"]
+
+# Install with: pip install -e '.[dev]'
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "httpx>=0.27.0",
+]
